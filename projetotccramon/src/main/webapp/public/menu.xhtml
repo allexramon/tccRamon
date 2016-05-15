@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+    <h:head>
+        <meta charset='utf-8'/>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <h:outputStylesheet library="css" name="stylesmenu.css"/>
+        <title>endemics</title> 
+    </h:head> 
+    <body>
+        <div id='cssmenu'>
+            <ul>
+                <li><a href='/projetotccramon/template/layout.jsf'><span>Inicio</span></a></li>
+                <li class='active has-sub'><a href='#'><span>Cadastro</span></a>
+                    <ul>
+                        <li class='has-sub'><a href="/endemicsweb/limited/arealist.jsf"><span>Setor</span></a></li>                       
+                        <li class='has-sub'><a href="/endemicsweb/limited/districtlist.jsf"><span>Usuários</span></a></li>
+                    </ul>
+                </li>
+                <li class='active has-sub'><a href='#'><span>Solicitações</span></a>
+                    <ul>
+                    
+                        <li class='has-sub'><a href="/endemicsweb/limited/samplelist.jsf"><span>Abrir Solicitação</span></a></li>                       
+                        <li class='has-sub'><a href="/endemicsweb/limited/visitlist.jsf"><span>Fechar Solicitação</span></a></li>
+
+                    </ul>
+                </li>
+                
+            </ul>
+        </div>
+
+    </body>
+</html>                                		

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml" 
+      xmlns:h="http://java.sun.com/jsf/html" 
+      xmlns:ui="http://java.sun.com/jsf/facelets" 
+      xmlns:p="http://primefaces.org/ui"> 
+    <h:head>
+        <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+        <title>endemics</title>
+        <h:outputStylesheet library="css" name="style.css"/>
+        <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+    </h:head>
+    <body>
+        <!-- Header -->
+        <div id="header">
+            <div class="shell">
+                <!-- Logo + Top Nav -->
+                <div id="top">
+                    <h1>Controle de Endemias</h1>
+                    <div id="top-navigation">
+                        Bem Vindo, <p:outputLabel value=" #{contextBean.user.name}!"  /><!--<a href="#"><strong>Administrator</strong></a>-->
+                        <!--<span>|</span>
+                        <a href="#">Help</a>
+                        <span>|</span>
+                        <a href="#">Profile Settings</a>
+                        <span>|</span>-->
+                        <a href="document.location='#{request.contextPath}/j_spring_security_logout" >Sair</a>
+                    </div>
+                </div>
+                <!-- End Logo + Top Nav -->
+
+                <!-- Main Nav -->
+                <div id="navigation">
+                    <ui:insert name="menu">
+                        <ui:include src="/public/menu.xhtml"/>
+                    </ui:insert>  
+                </div>
+                <!-- End Main Nav -->
+            </div>
+        </div>
+        <!-- End Header -->
+        <div id="container">
+
+            <div id="body2">
+                <p:messages id="messages" showDetail="true" autoUpdate="true" closable="true" />
+                <ui:insert name="body"/>
+
+            </div>
+
+        </div>
+
+        <!-- Footer -->
+        <div id="footer">
+            <div class="shell">
+                <span class="left">&copy; 2016 v 1.0 - Pedro L Saraiva</span>
+                <span class="right">
+                    Cidade: <p:outputLabel value="#{contextBean.user.city.description} - #{contextBean.user.city.state}"  />
+                </span>
+            </div>
+        </div>
+        <!-- End Footer -->
+
+    </body>
+</html>
