@@ -42,6 +42,9 @@ public class User implements Serializable {
     private String password;
   
     private boolean active;
+    
+    @ManyToOne
+    private Setor setor;
 
     @ElementCollection(targetClass = String.class, fetch = FetchType.EAGER)
     @JoinTable(
@@ -99,8 +102,17 @@ public class User implements Serializable {
     public void setPermission(List<String> permission) {
         this.permission = permission;
     }
+    
 
-    @Override
+    public Setor getSetor() {
+		return setor;
+	}
+
+	public void setSetor(Setor setor) {
+		this.setor = setor;
+	}
+
+	@Override
     public int hashCode() {
         int hash = 7;
         hash = 83 * hash + this.id;

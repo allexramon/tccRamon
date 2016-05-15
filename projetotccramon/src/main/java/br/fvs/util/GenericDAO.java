@@ -6,10 +6,13 @@ package br.fvs.util;
 
 import java.util.Date;
 import java.util.List;
+
 import javax.swing.JOptionPane;
+
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
 
 /**
@@ -105,7 +108,25 @@ public abstract class GenericDAO<T> {
         }
         return lista;
     }
-    
+
+    public List<T> listOrderBy(String ordeBy) {
+        List<T> lista = null;
+        try {
+            this.setSessao(HibernateUtil.getSessionFactory().openSession());
+            setTransacao(getSessao().beginTransaction());
+            lista = this.getSessao().createCriteria(classe).
+            		addOrder(Order.asc(ordeBy)).list();
+            
+        } catch (Throwable e) {
+            if (getTransacao().isActive()) {
+                getTransacao().rollback();
+            }
+            JOptionPane.showMessageDialog(null, "Não foi possível listar: " + e.getMessage());
+        } finally {
+            sessao.close();
+        }
+        return lista;
+    }
     
     
     /*

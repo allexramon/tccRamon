@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/template/layout.xhtml">
+
+	<ui:define name="title">
+            Setor
+        </ui:define>
+
+	<ui:define name="body">
+
+		<h:form>
+			<h:panelGrid columns="4">
+				<h:commandLink action="#{bsetor.chamaTela}">
+					<h:graphicImage library="pictures" name="insert.png"
+						style="border:0" title="Inserir Setor" />
+				</h:commandLink>
+			</h:panelGrid>
+
+			<p:dataTable id="tbl" value="#{bsetor.list}" var="setor"
+				scrollHeight="200" rows="10" paginator="true">
+				<f:facet name="header">
+                        Lista de Setores
+                    </f:facet>
+
+				<p:column id="description" headerText="Descrição"
+					filterBy="#{setor.description}">
+					<h:outputText value="#{setor.description}" />
+				</p:column>
+
+				<p:column style="width:50px">
+
+					<h:commandLink action="#{bsetor.chamaTela}">
+						<h:graphicImage library="pictures" name="edit.png"
+							style="border:0" title="Editar Setor" />
+						<f:setPropertyActionListener target="#{bsetor.setor}"
+							value="#{setor}" />
+
+					</h:commandLink>
+
+				</p:column>
+				<p:column style="width:50px">
+
+					<h:commandLink action="#{bsetor.remove}"
+						onclick="if (!confirm('Confirma a exclusão da Setor ?'))
+                                                   return false;"
+						title="Excluir Setor">
+						<h:graphicImage library="pictures" name="remove.png"
+							style="border:0" />
+						<f:setPropertyActionListener target="#{bsetor.setor}"
+							value="#{setor}" />
+					</h:commandLink>
+
+				</p:column>
+
+			</p:dataTable>
+		</h:form>
+	</ui:define>
+</ui:composition>
+</html>

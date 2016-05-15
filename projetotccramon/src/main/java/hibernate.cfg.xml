@@ -24,6 +24,7 @@
         <property name="hibernate.c3p0.min_size">5</property>   
         <!-- fim configuration pool via c3p0-->          
         <mapping class="br.fvs.model.User"/>     
+        <mapping class="br.fvs.model.Setor"/>     
         
         
     </session-factory>
